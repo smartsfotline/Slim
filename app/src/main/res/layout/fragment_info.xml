@@ -1,0 +1,186 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentinfo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pt.personaltrainer.fragments.FragmentInfo">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@android:color/white"
+            android:padding="2dp"
+
+            >
+
+
+
+
+            <ImageView
+                android:id="@+id/infoImage"
+                android:layout_width="260dp"
+                android:layout_height="157dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="45dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/aboutslim"
+                />
+
+            <TextView
+                android:id="@+id/tvInfoHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/infoImage"
+                android:text="@string/moto"
+                android:textStyle="bold"
+                android:textColor="@color/pickerblue"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="invisible"
+                />
+
+
+            <com.bluejamesbond.text.DocumentView xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/tvInfoContent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/tvInfoHeader"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:visibility="invisible"
+                ext:documentView_antialias="true"
+                ext:documentView_cacheConfig="auto_quality"
+                ext:documentView_hyphen="-"
+                ext:documentView_lineHeightMultiplier="2.5"
+                ext:documentView_maxLines="200"
+                ext:documentView_offsetX="0dp"
+                ext:documentView_offsetY="0dp"
+                ext:documentView_insetPaddingBottom="0dp"
+                ext:documentView_insetPaddingLeft="0dp"
+                ext:documentView_insetPaddingRight="0dp"
+                ext:documentView_insetPaddingTop="0dp"
+                ext:documentView_reverse="false"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@android:color/black"
+                ext:documentView_textFormat="plain"
+                ext:documentView_textSize="14sp"
+                ext:documentView_textStyle="plain"
+                ext:documentView_textSubPixel="true"
+                ext:documentView_wordSpacingMultiplier="1.0" />
+
+            <TextView
+            android:id="@+id/tvTimeTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_below="@+id/tvInfoContent"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:visibility="invisible"
+            android:textStyle="bold"
+            android:textColor="@color/pickerblue"
+            android:text="@string/infoTimeToMakeStep"
+            />
+
+            <com.bluejamesbond.text.DocumentView xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/tvInfoList"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="18dp"
+                android:layout_below="@+id/tvTimeTo"
+                android:visibility="invisible"
+                ext:documentView_antialias="true"
+                ext:documentView_cacheConfig="auto_quality"
+                ext:documentView_hyphen="-"
+                ext:documentView_lineHeightMultiplier="2.5"
+                ext:documentView_maxLines="200"
+                ext:documentView_offsetX="0dp"
+                ext:documentView_offsetY="0dp"
+                ext:documentView_insetPaddingBottom="0dp"
+                ext:documentView_insetPaddingLeft="0dp"
+                ext:documentView_insetPaddingRight="0dp"
+                ext:documentView_insetPaddingTop="0dp"
+                ext:documentView_reverse="false"
+                ext:documentView_textAlignment="justified"
+                ext:documentView_textColor="@android:color/black"
+                ext:documentView_textFormat="formatted"
+                ext:documentView_textSize="14sp"
+                ext:documentView_textStyle="plain"
+                ext:documentView_textSubPixel="true"
+                ext:documentView_wordSpacingMultiplier="1.0" />
+
+            <TextView
+                android:id="@+id/tvGoodWishes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvInfoList"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginTop="25dp"
+                android:visibility="invisible"
+                android:textStyle="bold|italic"
+                android:textColor="@color/pickerblue"
+                android:text="@string/infoGoodWishes"
+                />
+
+            <TextView
+                android:id="@+id/tvGoodWishes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvGoodWishes"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="45dp"
+                android:visibility="invisible"
+                android:textStyle="bold|italic"
+                android:textColor="@color/pickerblue"
+                android:text="@string/infoGoodWishes2"
+                />
+
+            <Button
+                android:id="@+id/btStartSlim"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="55dp"
+                android:layout_marginBottom="65dp"
+                android:layout_below="@+id/tvGoodWishes"
+                android:layout_centerHorizontal="true"
+                android:textSize="12sp"
+                android:background="@drawable/button_ok"
+                android:textColor="@drawable/buttontext_ok"
+                android:visibility="invisible"
+                android:text="Start Slim"
+                 />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>
+
+
+<!--<ImageView-->
+<!--android:id="@+id/infoImage1"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:src="@drawable/applebig500"-->
+<!--android:layout_centerHorizontal="true"-->
+    <!--/>-->
+

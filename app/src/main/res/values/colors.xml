@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2eabcf</color>
+    <color name="colorPrimaryDark">#2eabcf</color>
+    <color name="colorAccent">#3bd0dd</color>
+    <color name="greenAccent">#00ff00</color>
+    <color name="yellowAccent">#ffffcc</color>
+    <color name="darkGreenText">#24c13f</color>
+    <color name="darkGreenText2">#4fc154</color>
+    <color name="darkGreenText1">#31cc0e</color>
+    <color name="darkGreenToolbar">#32e00b</color>
+    <color name="darkLoliloop">#009688</color>
+    <color name="pickerblue">#2eabcf </color>
+    <color name="pickelightrblue">#b3e1e5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="skyblue">#D8FFFF</color>
+    <color name="grey">#DDDDDD</color>
+    <color name="darkGrey">#888888</color>
+    <color name="darkdarkGrey">#304030</color>
+    <color name="black">#000000</color>
+</resources>
+

@@ -1,0 +1,69 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pt.personaltrainer.fragments.FragmentSettings">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/swtchNotification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:switchMinWidth="200dp"
+                android:width="200dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="50dp"
+
+                android:text="@string/allow_notifications"/>
+
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/swtchSound"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:switchMinWidth="100dp"
+                android:layout_below="@+id/swtchNotification"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/notification_sound"/>
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/swtchLogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:switchMinWidth="100dp"
+                android:layout_below="@+id/swtchSound"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/logo_screen_while_loading"/>
+
+
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/swtchHours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:switchMinWidth="100dp"
+                android:layout_below="@+id/swtchLogo"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/display_progress_in_hours"/>
+
+
+        </RelativeLayout>
+
+
+
+</FrameLayout>
+
+    <!--android:textOn="@string/on"-->
+    <!--android:textOff="@string/off"-->

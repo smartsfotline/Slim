@@ -1,0 +1,339 @@
+<resources>
+    <string name="app_name">Slim</string>
+    <string name="lable">Привыкаем к хорошему</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Info</string>
+    <string name="habits">Привычки</string>
+    <string name="habit_01">Habit 01</string>
+    <string name="habit_02">Habit 02</string>
+
+    <string name="settings">Настройки</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Activate">Начать</string>
+    <string name="Alarm">Активируем напоминания</string>
+    <string name="Notification">Напоминание</string>
+    <string name="info">О программе</string>
+    <string name="applicationDescription">Худеем навсегда</string>
+    <string name="moto">привыкаем к хорошему</string>
+    <string name="allow_notifications">Разрешить напоминания</string>
+    <string name="notification_sound">Включить звук напоминаний</string>
+    <string name="logo_screen_while_loading">Включить заставку</string>
+    <string name="display_progress_in_hours">Отображать прогресс в часах</string>
+
+    <string name="notificationsAllowed">Напоминания разрешены</string>
+    <string name="soundOn">Звук напоминаний включен</string>
+    <string name="logoOn">Заставка во время загрузки включена</string>
+    <string name="timeInHoursSet">Отображение прогресса в часах включено</string>
+    <string name="timeInDefaultUnit">Отображение прогресса в днях включено</string>
+    <string name="notificationHeader">Привыкаем к хорошему</string>
+    <string name="notificationsReset">Напоминание обновлено</string>
+    <string name="notificationsDeactivated">Все напоминания отключены</string>
+    <string name="restartHabit">Начинаем работу над привычкой сначала</string>
+    <string name="areYouSure">Вы уверены?</string>
+    <string name="areYouSureGoldTitle">Вы уверены, что хотите приостановить работу наб привычкой?</string>
+    <string name="areYouSureGoldMessage">Сделав перерыв в работе над привычкой Вы не сможете получить золотую звезду</string>
+    <string name="threeHabits">Можно активировать не более трех привычек одновременно</string>
+    <string name="allowNotifications">Разрешите напоминания в настройках</string>
+    <string name="KeepGoing">Slim 21. Keep going!</string>
+    <string name="notificationSetAt">Напоминание установлено на</string>
+    <string name="notificationDeactivated">Напоминание отключено</string>
+    <string name="habitTrackerReset">Начинаем работу над привычкой сначала</string>
+    <string name="restartButton">заново</string>
+
+
+
+
+
+    <string name="infoLink0">http://sportwiki.to</string>
+    <!--<string name="infoLink"><a href=\"http://www.google.com\">Google</a></string>-->
+    <string name="on">ВКЛ</string>
+    <string name="off">ВЫКЛ</string>
+    <string name="habitActivated">Начинаем работать над привычкой</string>
+    <string name="habitResumed">Продолжаем работать над привычкой</string>
+    <string name="habitSuspended">Работа над привычкой приостановлена</string>
+    <string name="habitGoldSuspended">Непрерывная работа над привычкой остановлена. Прогресс обнулен</string>
+    <string name="habitStartToGold">Начинаем работать над "золотой" привычкой 21 день без перерывов</string>
+
+    <string name="congratulationsTitle">Поздравляем!</string>
+
+    <string name="congratulationsYou">Вы уже</string>
+    <string name="congratulationsWorkWithHabit">работаете над привычкой</string>
+    <string name="congratulationTotal">в сумме </string>
+    <string name="congratulationsSilverTextFirst">И это первая серебряная звездочка в Вашей коллекции</string>
+    <string name="congratulationsSilverText">И это еще одна серебряная звездочка в Вашей коллекции</string>
+    <string name="congratulationsWorkUnbroken">Вы не делали остановок уже</string>
+     <string name="congratulationsSilverLeftToGold">и до золотой звездочки осталось всего лишь</string>
+    <string name="congratulationsUnbrokenWork">непрерывной работы</string>
+    <string name="congratulationsSilverQuestion">Продолжаем работу над привычкой?</string>
+
+
+    <string name="congratulationsYouManagedToComplete">У Вас появилась хорошая привычка</string>
+    <string name="congratulationsYouHaveWorked">Вы усердно и непрерывно трудились над ней</string>
+    <string name="congratulationsGoldText">И в Вашей коллекции теперь еще одна золотая звездочка</string>
+    <string name="congratulationsGoldTextFirst">И в Вашей коллекции теперь есть первая золотая звездочка</string>
+    <string name="congratulationsDontForget">Не забывайте об этой привычке, и Ваша жизнь обязательно станет лучше, а талия тоньше</string>
+
+
+    <string name="restartProgressCanBeLostSilver">Весь прогресс в работе над этой привычкой будет утерян, а серебряная звездочка будет удалена</string>
+    <string name="restartProgressCanBeLostGold">Весь прогресс в работе над этой привычкой будет утерян, а золотая звездочка будет удалена</string>
+    <string name="restartProgressCanBeLost">Весь прогресс в работе над этой привычкой будет утерян</string>
+
+
+
+
+    <string name="congratulationsSilverUnbroken">дней не</string>
+    <string name="goToCardAction">goToHabit</string>
+    <string name="goToMainActivityAction">goToMainActivity</string>
+    <string name="actionMainActivity">MainActivityAction</string>
+    <string name="buttonOK">ок</string>
+    <string name="buttonSave">Сохранить</string>
+    <string name="buttonCancel">Отмена</string>
+    <string name="lableDetails">подробнее...</string>
+    <string name="lableOptional">желательно:</string>
+    <string name="notificationSetTime">Установите время напоминания</string>
+    <string name="soundOff">Звук напоминаний выключен</string>
+    <string name="logoOff">Заставка во время загрузки выключена</string>
+    <string name="labelInfo">О программе</string>
+    <string name="lableSettings">Настройки</string>
+
+
+    <string name="begin">Начать</string>
+    <string name="resume">Продолжить</string>
+    <string name="lableUnbroken">без пауз</string>
+    <string name="workWithHabitUnbroken">работы над привычкой\n(без остановок)</string>
+    <string name="workWithHabitWithPauses">работы над привычкой\n(с остановками)</string>
+    <string name="workWithHabit">работы над привычкой</string>
+    <string name="improvementYourself">улучшения себя</string>
+    <string name="lableTotal">в сумме</string>
+    <string name="lableLeftTo">осталось до</string>
+    <string name="lableLeftTo21">остался до</string>
+
+    <string name="days1">день</string>
+    <string name="days2_4">дня</string>
+    <string name="days0_5_20">дней</string>
+    <string name="hours1">час</string>
+    <string name="hours2_4">часа</string>
+    <string name="hours0_5_20">часов</string>
+    <string name="minutes1">минута</string>
+    <string name="minutes2_4">минуты</string>
+    <string name="minutes0_5_20">минут</string>
+    <string name="seconds1">секунда</string>
+    <string name="seconds2_4">секунды</string>
+    <string name="seconds0_5_20">секунд</string>
+
+
+
+<string name="habitName_01">Есть овощи</string>
+<string name="habitDescription_01">400–500 г в день</string>
+<string name="habitObligatory_01">
+\nесть не менее 400 г овощей в день для женщин, и не менее 500 г овощей в день для мужчин
+\nделить овощи на 5-7 порций, употреблять их равномерно в течение дня
+\nограничить употребление крахмалистых овощей до 100-150 г (картофель, кукуруза, горошек, отварные морковь и свекла)
+</string>
+
+    <string name="habitOptional_01">
+\nкак можно чаще включать в рацион капусту брокколи. Это один из самых богатых источников полезных веществ
+\nчередовать овощи (капуста, морковь, свекла, томаты, перец, шпинат, тыква, огурцы, чеснок, салат, спаржевая фасоль, кабачки, редис, зелень, хрен и др.)
+\nесть овощи в сыром, тушеном, печеном, запеченном на гриле, отварном, сушеном виде, в виде добавок в блюда
+\nне есть овощи в жареном, маринованном, засоленном виде
+\nдобавлять 1-2 чайных ложки клетчатки из пакетиков к основной пище или выпивать то же количество разведенной в стакане воды клетчатки,  если Вы вынуждены пропустить прием овощей
+</string>
+
+    <string name="habitKnowledge_01">
+\nОсновная польза овощей заключается в том, что они наполняют организм минеральными элементами, витаминами, органическими кислотами, медленными "хорошими" углеводами и клетчаткой. К тому же, большинство овощей способствует правильному пищеварению и нормализации уровня сахара в крови, дают длительное чувство сытости.
+\n1 порция овощей  имеет вес около 80 г. Это примерно полстакана приготовленных или измельченных сырых овощей, или 1 стакан листовых овощей. Или примерно один средний помидор, или семь помидоров черри, кусок толстого огурца длиной около пяти сантиметров, три столовых ложки горошка или нарезанной моркови. Это примерно столько, сколько помещается Вам в ладонь.
+\nОбычно среднее употребление овощей значительно меньше рекомендуемой нормы. По данным Росстата, в 2014 году среднедушевой показатель по дневному потреблению овощей составил лишь 267 граммов.
+</string>
+
+
+
+<string name="habitName_02">Высыпаться</string>
+<string name="habitDescription_02">спать 7-9 часов</string>
+<string name="habitObligatory_02">
+\nспать 7-9 часов (в зависимости от индивидуальной потребности)
+</string>
+
+<string name="habitOptional_02">
+\nложиться спать до 23.00
+\nпросыпаться без будильника
+\nпроветривать комнату перед сном
+\nделать короткую прогулку на свежем воздухе перед сном
+\nспать в комнате, куда не проникает свет и посторонние звуки
+\nиспользовать маску для сна, если мешает свет
+\nпить успокаивающие травяные чаи
+\nспать 1 час днем
+\nспать немного дольше чем обычно 1-2 раза в неделю (например, в выходные дни)
+\nне смотреть телевизор за 30 минут перед сном
+\nне заниматься спортом за 2-3 часа до сна
+</string>
+
+ <string name="habitKnowledge_02">
+\nздоровый сон уберегает от раздражительности и, как следствие, от пищевых срывов.
+Также, полноценный сон способствует выработке гормонов радости и сытости (лептин). И в течение дня голод чувствуется меньше
+\nпри недосыпании вырабатывается гормон, который повышает аппетит и способствует перееданию (грелин).
+Хронический недосып, как правило, приводит к хроническому перееданию
+</string>
+
+
+
+<string name="habitName_03">Пить воду</string>
+<string name="habitDescription_03">6-8 стаканов воды в день</string>
+<string name="habitObligatory_03">
+\nвыпивать 6-8 стаканов воды в день (в зависимости от индивидуальной потребности и физической активности)
+\nвыпивать стакан воды за 10-15 минут до еды, это позволит уменьшить количество съедаемой пищи
+\nвыпивать стакан воды при наступлении чувства голода, т.к. часто мы ошибочно принимаем чувство жажды за чувство голода
+\nне пить воду (жидкие напитки) во время еды, т.к. это увеличивает количество съеденного и ухудшает пищеварение
+\nне пить воду (жидкие напитки) в течение 15 минут после еды, т.к. это ухудшает пищеварение
+</string>
+
+ <string name="habitOptional_03">
+\nбольшую часть жидкости выпивать до 7-8 вечера, чтобы избежать отечности
+\nв перерывах на работе или учебе пить воду вместо чая и кофе
+\nснизить употребление крепкого кофе и чая (до 1-2 чашек в день) или крепость этих напитков, т.к. большое количество кофеина вызывает обезвоживание организма
+\nупотреблять фильтрованную (подойдет простейший фильтр-кувшин) или кипяченую воду
+\nдобавлять в воду несколько капель лимонного сока, это приносит пользу пищеварению и улучшает вкус воды
+</string>
+
+ <string name="habitKnowledge_03">
+\nвода значительно ускоряет похудение. Это доказано научными исследованиями. Например, в 2011 году ученые из США (университет Вирджинии) выяснили, что люди, регулярно употребляющие воду, худеют на 44% быстрее
+\nжажда служит показателем обезвоживания организма и он бьет тревогу. Поэтому человек должен восполнять нехватку воды постоянно – не дожидаясь жажды
+\nобезвоженный организм не может полностью очищать органы от вредных веществ, они поступают в кровь, и это неизбежно отражается на состоянии кожи. Кожа становится бледной, дряблой, шелушится, приобретает землистый оттенок, на лице появляются прыщи, а на бедрах и ягодицах – целлюлит, наблюдается сухость пяток и локтей
+\nпри различных состояниях (гипертоническая болезнь, заболевания почек, ожирение 2-3 степени и др.) потребление воды может меняться
+ </string>
+
+
+    <string name="habitName_04">Не заедать стресс</string>
+    <string name="habitDescription_04">радоваться жизни</string>
+    <string name="habitObligatory_04">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitOptional_04">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitKnowledge_04">\n будет доступно после релиза в версии Slim 1.0</string>
+
+    <string name="habitName_05">Соблюдать баланс</string>
+    <string name="habitDescription_05">есть по принципу \"тарелки\"</string>
+    <string name="habitObligatory_05">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitOptional_05">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitKnowledge_05">\n будет доступно после релиза в версии Slim 1.0</string>
+
+    <string name="habitName_06">Есть орехи</string>
+    <string name="habitDescription_06">30-50 г в день</string>
+    <string name="habitObligatory_06">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitOptional_06">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitKnowledge_06">\n будет доступно после релиза в версии Slim 1.0</string>
+
+    <string name="habitName_07">Заниматься спортом</string>
+    <string name="habitDescription_07">2-3 раза в неделю</string>
+    <string name="habitObligatory_07">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitOptional_07">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitKnowledge_07">\n будет доступно после релиза в версии Slim 1.0</string>
+
+    <string name="habitName_08">Есть фрукты</string>
+    <string name="habitDescription_08">200-300 г в день</string>
+    <string name="habitObligatory_08">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitOptional_08">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitKnowledge_08">\n будет доступно после релиза в версии Slim 1.0</string>
+
+    <string name="habitName_09">Есть каши</string>
+    <string name="habitDescription_09">контролировать сахар</string>
+    <string name="habitObligatory_09">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitOptional_09">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitKnowledge_09">\n будет доступно после релиза в версии Slim 1.0</string>
+
+    <string name="habitName_10">Покупать разумно</string>
+    <string name="habitDescription_10">запасать \"здоровые\" продукты</string>
+    <string name="habitObligatory_10">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitOptional_10">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitKnowledge_10">\n будет доступно после релиза в версии Slim 1.0</string>
+
+    <string name="habitName_11">Есть меньше соли</string>
+    <string name="habitDescription_11">не более 5 г в день</string>
+    <string name="habitObligatory_11">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitOptional_11">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitKnowledge_11">\n будет доступно после релиза в версии Slim 1.0</string>
+
+    <string name="habitName_12">Не есть вредного</string>
+    <string name="habitDescription_12">жареного, мучного, крахмального</string>
+    <string name="habitObligatory_12">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitOptional_12">\n будет доступно после релиза в версии Slim 1.0</string>
+    <string name="habitKnowledge_12">\n будет доступно после релиза в версии Slim 1.0</string>
+
+
+
+
+
+<string name="infoDescription">
+\u00A0\u00A0\u00A0\u00A0\u00A0Худеть сложно, но удержать достигнутый результат еще сложнее. После \"журнальных\" диет килограммы возвращаются снова
+\n\u00A0\u00A0\u00A0\u00A0\u00A0Диетологи не рекомендуют такие диеты. Вместо этого специалисты помогают своим клиентам вырабатывать полезные привычки
+\n\u00A0\u00A0\u00A0\u00A0\u00A0Килограммы уходят незаметно и больше не возвращаются. Привыкание к здоровому питанию и здоровому образу жизни происходит постепенно и без стресса для организма
+\n\u00A0\u00A0\u00A0\u00A0\u00A0Теперь этот метод доступен и Вам! По рекомендациям диетологов и персональных тренеров мы собрали самые эффективные привычки. Slim поможет Вам похудеть раз и навсегда!
+\n\u00A0\u00A0\u00A0\u00A0\u00A0Чтобы привычка стала частью Вашей жизни, нужно непрерывно придерживаться новой модели поведения всего 21 день. После этого Вам уже не потребуется прилагать усилий, для того чтобы следовать правилам.
+Для закрепления результата необходимо еще 1-2 месяца
+</string>
+
+ <string name="infoList">
+\nвыберите привычку из списка и внимательно изучите ее описание и разделы
+\nактивируйте привычку и установите время ежедневного напоминания, оно поможет не сбиться с выбранного курса
+\nв течение 21-го дня обязательно выполняйте ВСЕ рекомендации из раздела \"обязательно\", а по возможности и из раздела \"желательно\"
+\nчерез 21 день в Вашей жизни появится еще одна хорошая привычка, а в Вашей коллекции - первая золотая звездочка
+\nпосле окончания работы на привычкой постарайтесь закрепить успех и продолжайте следовать правилам еще 1-2 месяца
+\nесли Вы вынуждены сделать короткий перерыв в работе над привычкой (до 2-х дней), то приостановите отсчет оставшихся дней. Возобновите работу над привычкой как можно скорее
+\nперерывы снижают эффективность метода, и через 21 день привычка будет выработана лишь частично. В этом случае в Вашей коллекция появится серебряная звездочка
+\nне делайте перерывы дольше 2-х дней. Если же Вы вынуждены прерваться на более долгий строк, то не обманывайте себя и начните работу над привычкой сначала
+\nработа более чем над тремя привычками одновременно может быть неэффективной, поэтому Вы не сможете активировать более трех привычек одновременно
+</string>
+
+<string name="infoTimeToMakeStep">
+пришло время сделать первый шаг
+</string>
+
+<string name="infoGoodWishes">
+Становитесь лучше вместе с нами!
+</string>
+
+    <string name="infoGoodWishes2">
+Ваш Slim
+</string>
+
+
+<string name="short_motivation_00">"Cчет приходит после еды"</string>
+<string name="short_motivation_01">"Жизнь - это сумма привычек"</string>
+<string name="short_motivation_02">"Не делайте из еды культа"</string>
+<string name="short_motivation_03">"Излишняя еда тебя же съест"</string>
+<string name="short_motivation_04">"Друг познается в еде"</string>
+<string name="short_motivation_05">"Привычка - вторая натура"</string>
+    <string name="short_motivation_06">"Сдамся - лучше не станет"</string>
+    <string name="short_motivation_07">"Настойчивость - залог успеха"</string>
+    <string name="short_motivation_08">"Главное - не останавливаться "</string>
+    <string name="short_motivation_09">"Кто хочет - тот стремится"</string>
+    <string name="short_motivation_10">"Мы есть то, что мы едим"</string>
+
+
+<string name="motivation_00">"Аппетит приходит во время еды, а счет - после     Аппетит приходит во время еды, а счет - после     Аппетит приходит во время еды, а счет - после"</string>
+<string name="motivation_01">"Вся наша жизнь, это сумма привычек несущих нас неизбежно к нашей судьбе     Вся наша жизнь, это сумма привычек несущих нас неизбежно к нашей судьбе   Вся наша жизнь, это сумма привычек несущих нас неизбежно к нашей судьбе"</string>
+<string name="motivation_02">"Не делайте из еды культа     Не делайте из еды культа     Не делайте из еды культа"</string>
+<string name="motivation_03">"Удовлетворение от самого экзотического десерта не идет ни в какое сравнение с удовлетворением от покупки платья меньшего размера"</string>
+<string name="motivation_04">"Ты много не съедай в один присест, излишняя еда тебя же съест     Ты много не съедай в один присест, излишняя еда тебя же съест "</string>
+    <string name="motivation_05">"Не для того я живу, чтобы есть, а ем для того, чтобы жить     Не для того я живу, чтобы есть, а ем для того, чтобы жить"</string>
+    <string name="motivation_06">"Не ужинать — святой закон, кому всего дороже сон     Не ужинать — святой закон, кому всего дороже сон""</string>
+    <string name="motivation_07">"Толстяки живут меньше. Зато едят больше     Толстяки живут меньше. Зато едят больше     Толстяки живут меньше. Зато едят больше"</string>
+    <string name="motivation_08">"Голод - это временное явление, а умеренность это длительное наслаждение   Голод - это временное явление, а умеренность это длительное наслаждение"</string>
+    <string name="motivation_09">"С тех пор как люди научились варить пищу, они едят вдвое больше, чем требует природа     С тех пор как люди научились варить пищу, они едят вдвое больше, чем требует природа"</string>
+    <string name="motivation_10">"Иному лучше курица в тарелке, чем журавль в небе     Иному лучше курица в тарелке, чем журавль в небе     Иному лучше курица в тарелке, чем журавль в небе"</string>
+    <string name="motivation_11">"Японская кухня - вот идеальная пища для балерины     Японская кухня - вот идеальная пища для балерины     Японская кухня - вот идеальная пища для балерины"</string>
+    <string name="motivation_12">"Диета - воспитание сильной воли слабым желудком     Диета - воспитание сильной воли слабым желудком     Диета - воспитание сильной воли слабым желудком"</string>
+    <string name="motivation_13">"Моя жена стала ходить к диетологу и за два месяца сбросила 300 долларов     Моя жена стала ходить к диетологу и за два месяца сбросила 300 долларов"</string>
+    <string name="motivation_14">"Если хочешь продлить свою жизнь, укороти свои трапезы     Если хочешь продлить свою жизнь, укороти свои трапезы     Если хочешь продлить свою жизнь, укороти свои трапезы"</string>
+    <string name="motivation_15">"Голодание дает пищу для размышления     Голодание дает пищу для размышления     Голодание дает пищу для размышления"</string>
+    <string name="motivation_16">"Счастье - миг, привычка - вечность     Счастье - миг, привычка - вечность     Счастье - миг, привычка - вечность"</string>
+    <string name="motivation_17">"Побороть дурные привычки легче сегодня, чем завтра     Побороть дурные привычки легче сегодня, чем завтра     Побороть дурные привычки легче сегодня, чем завтра"</string>
+    <string name="motivation_18">"Вредная привычка, как мягкое кресло - сесть легко, а встать трудно     Вредная привычка, как мягкое кресло - сесть легко, а встать трудно"</string>
+    <string name="motivation_19">"Выбирай лучшее, а привычка сделает его и приятным     Выбирай лучшее, а привычка сделает его и приятным     Выбирай лучшее, а привычка сделает его и приятным"</string>
+    <string name="motivation_20">"Люди постоянны только в одном - в привычках     Люди постоянны только в одном - в привычках     Люди постоянны только в одном - в привычках"</string>
+    <string name="motivation_21">"Когда мне тяжело, я всегда напоминаю себе о том, что если я сдамся — лучше не станет     Когда мне тяжело, я всегда напоминаю себе о том, что если я сдамся — лучше не станет"</string>
+    <string name="motivation_22">"Своим терпением мы можем достичь большего, чем силой     Своим терпением мы можем достичь большего, чем силой     Своим терпением мы можем достичь большего, чем силой"</string>
+    <string name="motivation_23">"Только упорство и целеустремленность всемогущи     Только упорство и целеустремленность всемогущи     Только упорство и целеустремленность всемогущи"</string>
+    <string name="motivation_24">"Если тебе легко, значит ты летишь в пропасть. Если тебе трудно, значит ты поднимаешься в гору     Если тебе легко, значит ты летишь в пропасть. Если тебе трудно, значит ты поднимаешься в гору"</string>
+    <string name="motivation_25">"Не важно с какой скоростью ты движешься к своей цели, главное не останавливаться     е важно с какой скоростью ты движешься к своей цели, главное не останавливаться"</string>
+</resources>
