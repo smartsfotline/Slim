@@ -42,6 +42,7 @@ import java.util.Random;
 
 public class CardDetails extends AppCompatActivity{
 
+    //Класс, для структурирования текста
     public static class MySpan implements LineHeightSpan {
         public final int height;
 
@@ -60,11 +61,13 @@ public class CardDetails extends AppCompatActivity{
         }
     }
 
+    //Служебные атрибуты класса
     private static Context context;
     public int hoursCurrent;
     public int minutesCurrent;
     public Habits habit;
 
+    //Вьюхи для работы с соответствующими элементами экрана
     TextView tvHabit;
     TextView tvStar;
     TextView tvState;
@@ -80,7 +83,6 @@ public class CardDetails extends AppCompatActivity{
 
     TextView tvLableHabitDays;
     TextView tvLable;
-
 
     ImageView ivHabit;
     DocumentView docView;
@@ -100,6 +102,7 @@ public class CardDetails extends AppCompatActivity{
     int ID = 0;
     int activeHabitsNumber = 0;
     int starAchieved = SettingsHelper.noStar;
+
     String habitName;
     String stringMinutes;
     String unitsToSet;
@@ -108,20 +111,16 @@ public class CardDetails extends AppCompatActivity{
     SQLiteDatabase db;
     SettingsHelper settingsHelper;
     Calendar calendar ;
-
     Handler handler;
-
-
 
    @Override
     protected void onCreate(Bundle savedInstanceState){
        super.onCreate(savedInstanceState);
        setContentView(R.layout.card_details);
 
+       //При загрузке страницы просиходит пауза 0.2 сек (thread.sleep) для того, чтобы дать успеть заполниться всем текстовым полям
+       //Через 0.2 секунды элементы синхронно становятся видимыми
        rlTextBlock = (RelativeLayout) findViewById(R.id.rlTextBlock);
-
-
-
        handler = new Handler() {
            public void handleMessage(android.os.Message msg)
            {
@@ -131,54 +130,57 @@ public class CardDetails extends AppCompatActivity{
        };
 
 
-       //Helpers initialization
+       //Инициализация хелперов
        context = this;
        dbHelper = new DBHelper(this);
        db = dbHelper.getWritableDatabase();
        settingsHelper = new SettingsHelper();
 
-        //Data initialization
+       //Инициализация данных
+       //Считывает данные из интента, с помощью которого была вызваа данная активити
        Intent intent = getIntent();
        if (intent == null) {finish();}
        ID = intent.getIntExtra("ID",1);
 
+       //Инициализация текущего времени
        calendar = Calendar.getInstance();
        calendar.setTimeInMillis(System.currentTimeMillis());
        hoursCurrent = calendar.get(Calendar.HOUR_OF_DAY);
        minutesCurrent = calendar.get(Calendar.MINUTE);
        currentTime = System.currentTimeMillis();
 
+       //С помощью ID, переданного с интентом считываем данные вызванной привычки
        this.habit = dbHelper.getRecord(db, ID);
        habitName = habit.getName();
 
-
-        //Common UI initialization
+       //Инициализация элементов UI
+       //Имя привычки
        tvHabit = (TextView) findViewById(R.id.habit_name_l) ;
        tvHabit.setText(habit.getName());
 
+       //Краткое описание привычки
        tvHabit = (TextView) findViewById(R.id.habit_description_l) ;
        tvHabit.setText(habit.getDescription());
 
+       //Картинка привычки
        ivHabit = (ImageView) findViewById(R.id.habit_photo_l) ;
        ivHabit.setImageResource(habit.getPhotoID());
 
+       //Звездочка (отображается только если получена звезда для привычки)
        ivStarBig = (ImageView) findViewById(R.id.habit_star_big) ;
        ivStarBig.setVisibility(View.GONE);
 
-
-
-       int wordsNumber = 0;
-       String obligatoryTerms = "";
-       String optionalTerms = "";
-       String description="";
-
+       //Инициализация переменных для формирования списков
+       //Объявляем переменные
        SpannableStringBuilder totalSpan = new SpannableStringBuilder();
        MyBullet bulletSpan;
        Spannable span;
 
+       //Формируем массив данных из атрибута (строка) "obligatory" привычки
        String[] partsObligatory = habit.getObligatory().split("\n");
        totalSpan = new SpannableStringBuilder();
 
+       //Формируем список из массива данных созданных из "obligatory"
        for (String string: partsObligatory)
        {
            bulletSpan = new MyBullet(0,getResources().getColor(R.color.pickerblue));
@@ -188,14 +190,18 @@ public class CardDetails extends AppCompatActivity{
            totalSpan.append(span);
            totalSpan.append("\n");
           }
-//       totalSpan.setSpan(new JustifiedSpan(), 0, totalSpan.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+
+  //  totalSpan.setSpan(new JustifiedSpan(), 0, totalSpan.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+
+      //Связываем полученный список и соответствующую вьюху на экране
        docView = (DocumentView) findViewById(R.id.habit_detailed_description_1) ;
        docView.setText(totalSpan);
 
-
+      //Формируем массив данных из атрибута (строка) "optional" привычки
        String[] partsOptional = habit.getOptional().split("\n");
        totalSpan = new SpannableStringBuilder();
 
+       //Формируем список из массива данных созданных из "optional"
        for (String string: partsOptional)
        {
            bulletSpan = new MyBullet(0,getResources().getColor(R.color.pickerblue));
@@ -206,12 +212,16 @@ public class CardDetails extends AppCompatActivity{
            totalSpan.append("\n");
        }
 //       totalSpan.setSpan(new JustifiedSpan(), 0, totalSpan.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+
+       //Связываем полученный список и соответствующую вьюху на экране
        docView = (DocumentView) findViewById(R.id.habit_detailed_description_2) ;
        docView.setText(totalSpan);
 
+       //Формируем массив данных из атрибута (строка) "knowledge" привычки
        String[] partsKnowledge = habit.getKnowledge().split("\n");
        totalSpan = new SpannableStringBuilder();
 
+       //Формируем список из массива данных созданных из "knowledge"
        for (String string: partsKnowledge)
        {
            bulletSpan = new MyBullet(0,getResources().getColor(R.color.pickerblue));
@@ -222,11 +232,12 @@ public class CardDetails extends AppCompatActivity{
            totalSpan.append("\n");
        }
 //       totalSpan.setSpan(new JustifiedSpan(), 0, totalSpan.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+
+       //Связываем полученный список и соответствующую вьюху на экране
        docView = (DocumentView) findViewById(R.id.habit_detailed_description_3) ;
        docView.setText(totalSpan);
 
-
-
+     //Пауза 0.2 секунды
        Thread t = new Thread(new Runnable()
        {
            public void run()
@@ -245,116 +256,124 @@ public class CardDetails extends AppCompatActivity{
        );
        t.start();
 
-
+       //Инициализация таймера
        timePicker = (TimePicker) findViewById(R.id.timePicker1);
        timePicker.setIs24HourView(true);
 
+       //Инициализация чекбоксов
        chbActive =                 (CheckBox)   findViewById(R.id.checkbox_activ);
        chbAlarm =                  (CheckBox)   findViewById(R.id.checkbox_alarm);
-       timePicker =                (TimePicker) findViewById(R.id.timePicker1);
+
+       //Инициализация кнопок для таймпикера
        timePickerConfirmButton =   (Button)     findViewById(R.id.timePickerConfirm);
        timePickerCancelButton =    (Button)     findViewById(R.id.timePickerCancel);
+
+       //Инициализация бегущей строки
        tvRunningText =             (TextView)   findViewById(R.id.tvRuningText);
 
+       //Инициализация вьюхи для отображения дней и текстового описания (день, дней, дня)
        tvDaysHabitWordDays =       (TextView)   findViewById(R.id.days1);
        tvLableHabitDays =          (TextView)   findViewById(R.id.lable_habit_days);
+
+       //Инициализация вьюх для отображения статуса (play, stop, resumed) и звезд (нет, серебряная, золотая)
        tvState =                   (TextView)   findViewById(R.id.habit_state);
        tvStar =                    (TextView)   findViewById(R.id.habit_star);
 
+      //Инициализация вьюх для отображения оставшихся до цели дней
        tvDaysLeft =                (TextView)   findViewById(R.id.days_left);
        tvLableDaysLeft =           (TextView)   findViewById(R.id.lable_days_left);
        ivStarLeft =                (ImageView)  findViewById(R.id.star_left);
        tvDaysLeftWordDays =        (TextView)   findViewById(R.id.days2);
 
 
- //Setting of motivation running text
-       Random randomGenerator = new Random();
-       int randIndex = randomGenerator.nextInt(25);
-       String motivation = motivation = getResources().getString(R.string.motivation_00) ;
-
-       switch(randIndex)
-       {
-           case 0:
-                motivation = getResources().getString(R.string.motivation_00);
-                break;
-           case 1:
-               motivation = getResources().getString(R.string.motivation_01);
-                break;
-           case 2:
-               motivation = getResources().getString(R.string.motivation_02);
-                break;
-           case 3:
-               motivation = getResources().getString(R.string.motivation_03);
-                break;
-           case 4:
-               motivation = getResources().getString(R.string.motivation_04);
-                break;
-           case 5:
-               motivation = getResources().getString(R.string.motivation_05);
-               break;
-           case 6:
-               motivation = getResources().getString(R.string.motivation_06);
-               break;
-           case 7:
-               motivation = getResources().getString(R.string.motivation_07);
-               break;
-           case 8:
-               motivation = getResources().getString(R.string.motivation_08);
-               break;
-           case 9:
-               motivation = getResources().getString(R.string.motivation_09);
-               break;
-           case 10:
-               motivation = getResources().getString(R.string.motivation_10);
-               break;
-           case 11:
-               motivation = getResources().getString(R.string.motivation_11);
-               break;
-           case 12:
-               motivation = getResources().getString(R.string.motivation_12);
-               break;
-           case 13:
-               motivation = getResources().getString(R.string.motivation_13);
-               break;
-           case 14:
-               motivation = getResources().getString(R.string.motivation_14);
-               break;
-           case 15:
-               motivation = getResources().getString(R.string.motivation_15);
-               break;
-           case 16:
-               motivation = getResources().getString(R.string.motivation_16);
-               break;
-           case 17:
-               motivation = getResources().getString(R.string.motivation_17);
-               break;
-           case 18:
-               motivation = getResources().getString(R.string.motivation_18);
-               break;
-           case 19:
-               motivation = getResources().getString(R.string.motivation_19);
-               break;
-           case 20:
-               motivation = getResources().getString(R.string.motivation_20);
-               break;
-           case 21:
-               motivation = getResources().getString(R.string.motivation_21);
-               break;
-           case 22:
-               motivation = getResources().getString(R.string.motivation_22);
-               break;
-           case 23:
-               motivation = getResources().getString(R.string.motivation_23);
-               break;
-           case 24:
-               motivation = getResources().getString(R.string.motivation_24);
-               break;
-
-       }
-
-       tvRunningText = (TextView) findViewById(R.id.tvRuningText);
-       tvRunningText.setText(motivation);
-       tvRunningText.setSelected(true);
+ //Установка бегущей строки с мотивацией
+//       Random randomGenerator = new Random();
+//       int randIndex = randomGenerator.nextInt(25);
+//       String motivation = motivation = getResources().getString(R.string.motivation_00) ;
+//
+//       switch(randIndex)
+//       {
+//           case 0:
+//                motivation = getResources().getString(R.string.motivation_00);
+//                break;
+//           case 1:
+//               motivation = getResources().getString(R.string.motivation_01);
+//                break;
+//           case 2:
+//               motivation = getResources().getString(R.string.motivation_02);
+//                break;
+//           case 3:
+//               motivation = getResources().getString(R.string.motivation_03);
+//                break;
+//           case 4:
+//               motivation = getResources().getString(R.string.motivation_04);
+//                break;
+//           case 5:
+//               motivation = getResources().getString(R.string.motivation_05);
+//               break;
+//           case 6:
+//               motivation = getResources().getString(R.string.motivation_06);
+//               break;
+//           case 7:
+//               motivation = getResources().getString(R.string.motivation_07);
+//               break;
+//           case 8:
+//               motivation = getResources().getString(R.string.motivation_08);
+//               break;
+//           case 9:
+//               motivation = getResources().getString(R.string.motivation_09);
+//               break;
+//           case 10:
+//               motivation = getResources().getString(R.string.motivation_10);
+//               break;
+//           case 11:
+//               motivation = getResources().getString(R.string.motivation_11);
+//               break;
+//           case 12:
+//               motivation = getResources().getString(R.string.motivation_12);
+//               break;
+//           case 13:
+//               motivation = getResources().getString(R.string.motivation_13);
+//               break;
+//           case 14:
+//               motivation = getResources().getString(R.string.motivation_14);
+//               break;
+//           case 15:
+//               motivation = getResources().getString(R.string.motivation_15);
+//               break;
+//           case 16:
+//               motivation = getResources().getString(R.string.motivation_16);
+//               break;
+//           case 17:
+//               motivation = getResources().getString(R.string.motivation_17);
+//               break;
+//           case 18:
+//               motivation = getResources().getString(R.string.motivation_18);
+//               break;
+//           case 19:
+//               motivation = getResources().getString(R.string.motivation_19);
+//               break;
+//           case 20:
+//               motivation = getResources().getString(R.string.motivation_20);
+//               break;
+//           case 21:
+//               motivation = getResources().getString(R.string.motivation_21);
+//               break;
+//           case 22:
+//               motivation = getResources().getString(R.string.motivation_22);
+//               break;
+//           case 23:
+//               motivation = getResources().getString(R.string.motivation_23);
+//               break;
+//           case 24:
+//               motivation = getResources().getString(R.string.motivation_24);
+//               break;
+//
+//       }
+//
+//       tvRunningText = (TextView) findViewById(R.id.tvRuningText);
+//       tvRunningText.setText(motivation);
+//       tvRunningText.setSelected(true);
 
 
 
@@ -362,24 +381,23 @@ public class CardDetails extends AppCompatActivity{
 //    ****************************************************************
 //    *************** BUTTONS' listeners initialization *****************
 
-       //Toobar filing and Backspase navigation setting
+       //Toolbar filling and Backspase navigation setting
        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
        setSupportActionBar(toolbar);
        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-       getSupportActionBar().setDisplayShowHomeEnabled(true);
+       getSupportActionBar().setDisplayShowHomeEnabled(true); //Формуруем обратнус стрелку на тулбаре
        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
 
                Intent parentIntent = getIntent();
-               String actionName = "initial";
-               actionName = parentIntent.getAction();
+               String actionName   = parentIntent.getAction();
 
-               if (actionName.equals(getString(R.string.goToCardAction)))
+               if (actionName.equals(getString(R.string.goToCardAction))) //Привычка была вызвана с экрана привычек, и после этого других интентов не формировалась
                {
-                   finish();
+                   finish();  //Выйти из обработчика, но не из активити
                }
-               else //if ( actionName.equals(getString(R.string.)))
+               else //Нажата кнопка Backspace. Выходим на главный экран
                {
                    Intent intentToMainActivity = new Intent(getApplicationContext(), SettingsHelper.class);
                    intentToMainActivity.setAction(getString(R.string.actionMainActivity));
@@ -390,6 +408,7 @@ public class CardDetails extends AppCompatActivity{
            }
        });
 
+       //Устанавливаем обработчики на изменение времени в таймере. Делаем кнопки видимыми
        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
                timePickerConfirmButton.setEnabled(true);
@@ -400,14 +419,14 @@ public class CardDetails extends AppCompatActivity{
            }
        });
 
-
-
+        //Устанавливаем обработчик кнопки "Confirm"
        timePickerConfirmButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                int hoursInPicker   = timePicker.getCurrentHour();
                int minutesInPicker = timePicker.getCurrentMinute();
 
+               //Актуализируются данные привычки
                dbHelper.updateHabitAlarmStatus(db, ID, SettingsHelper.alarmStatusActive);
                dbHelper.updateAlarmTime(db, ID, hoursInPicker, minutesInPicker);
                habit = dbHelper.getRecord(db, ID);
@@ -422,12 +441,14 @@ public class CardDetails extends AppCompatActivity{
            }
        });
 
+       //Устанавливаем обработчик кнопки "Cancel"
        timePickerCancelButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                timePickerConfirmButton = (Button) findViewById(R.id.timePickerConfirm);
-               timePickerCancelButton = (Button) findViewById(R.id.timePickerCancel);
+               timePickerCancelButton  = (Button) findViewById(R.id.timePickerCancel);
 
+               //В зависимости от статуса привычки выставляем время в таймере: или время из БД, или текущее время
                if (habit.alarmstatus == SettingsHelper.alarmStatusActive) {
                    timePicker.setCurrentHour(habit.alarmhours);
                    timePicker.setCurrentMinute(habit.alarmminutes);
@@ -445,7 +466,7 @@ public class CardDetails extends AppCompatActivity{
        });
 
 
-       //Setting of dialog on restart button
+       //Setting of dialog on restart button (Кнопка начинает привычку сначала)
        restartButton = (Button) findViewById(R.id.restartHabit);
        restartButton.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -479,7 +500,7 @@ public class CardDetails extends AppCompatActivity{
            }
        });
 
-       //Setting of dialog on restart button
+       //Установка обработчика кнопки для тестирования нотификация. Кнопка скрыта, и видима только в тестовой версии.
        Button testButton = (Button) findViewById(R.id.testNotification);
        testButton.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -539,6 +560,7 @@ public class CardDetails extends AppCompatActivity{
 //***********************************************************
     public void onCheckboxClicked(View view) throws InterruptedException {
 
+        //Проверяем достигнута ли звезда
          starAchieved = checkForStar(ID, context);
         if (starAchieved == SettingsHelper.goldStar)
         {
@@ -551,6 +573,7 @@ public class CardDetails extends AppCompatActivity{
             return;
         }
 
+        //Нельзя активировать более 3 привычек одновременно. Проверяем это.
         if (chbActive.isChecked())
         {
             activeHabitsNumber = dbHelper.getActiveHabitsNumber();
@@ -561,14 +584,14 @@ public class CardDetails extends AppCompatActivity{
                 return;
             }
 
+            //Обрабатываем активацию привычки (вносим изменения в БД, показываем сообщения)
             handleActiveChecboxSet();
-
-
         }
 
          else   //Deactivate habit
         {
             if (habit.status == SettingsHelper.statusActiveNonStop) {
+                //Отображаем диалог "ВЫ УВЕРЕНЫ?" если привычка выполняется без пауз
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setCancelable(false);
                 builder.setTitle(R.string.areYouSure);
@@ -595,6 +618,7 @@ public class CardDetails extends AppCompatActivity{
             }
             else
             {
+                //Обрабатываем ДЕактивацию привычки (вносим изменения в БД, показываем сообщения)
                 handleActiveCheckboxUnset();
             }
          }
@@ -604,7 +628,7 @@ public class CardDetails extends AppCompatActivity{
 //**********************************************************
 //*************Alarm Checkbox handling****
 //***********************************************************
-
+//Обрабатываем активацию/деактивацию чекбокса "Напоминание"
     public void onAlarmClicked(View view) throws InterruptedException {
         chbAlarm = (CheckBox) view;
         if ( chbAlarm.isChecked()) //Alarm checkbox is set
@@ -625,6 +649,7 @@ public class CardDetails extends AppCompatActivity{
             timePickerConfirmButton.setEnabled(false);
             timePickerCancelButton.setEnabled(false);
 
+            //Устанавливаем текущее время в качестве исходного
             calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
 
@@ -634,6 +659,7 @@ public class CardDetails extends AppCompatActivity{
             timePicker.setCurrentHour(hoursCurrent);
             timePicker.setCurrentMinute(minutesCurrent);
 
+            //Кнопки недоступны до первой прокрутки таймера
             timePickerConfirmButton.setEnabled(false);
             timePickerCancelButton.setEnabled(false);
 
@@ -646,7 +672,6 @@ public class CardDetails extends AppCompatActivity{
         else //********** Alarm checkbox is switched off************
         {
             chbAlarm.setChecked(false);
-
             calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
             hoursCurrent = calendar.get(Calendar.HOUR_OF_DAY);
@@ -655,13 +680,14 @@ public class CardDetails extends AppCompatActivity{
             timePicker.setCurrentMinute(minutesCurrent);
             timePicker.setEnabled(false);
 
+            //Кнопки исчезают
             timePickerConfirmButton.setVisibility(View.INVISIBLE);
             timePickerCancelButton.setVisibility(View.INVISIBLE);
 
             dbHelper.updateHabitAlarmStatus(db, ID, SettingsHelper.alarmStatusNotActive);
-            //dbHelper.updateAlarmTime(db, ID, 0, 0);
             habit = dbHelper.getRecord(db, ID);
 
+            //Отмена активного уведомления
             AlarmHelper alarmHelper = new AlarmHelper();
             alarmHelper.cancelNotification(context, ID);
 
@@ -679,6 +705,9 @@ public class CardDetails extends AppCompatActivity{
         super.onPause();
     }
 
+    //В методе инициализируются статусы и данные, происходит проверка на наличие звезд.
+    //Этот метод выбран для данных операций т.к. он вызывается часто. А значит экран всегда будет отображать актуальное состояние привычки
+    //Перфоманс программы от этого не пострадал
    @Override
   protected void onResume() {
        context = this;
@@ -734,6 +763,7 @@ public class CardDetails extends AppCompatActivity{
        super.onResume();
    }
 
+//Метод для отобржания скрытых данных
   public void onDetailsClicked(View v)
   {
           docView = (DocumentView) findViewById(R.id.habit_detailed_description_2);
@@ -750,6 +780,7 @@ public class CardDetails extends AppCompatActivity{
           tvLable.setVisibility(View.GONE);
   }
 
+  //Метод для скрытия избыточных данных
     public void onHideClicked(View v)
     {
         docView = (DocumentView) findViewById(R.id.habit_detailed_description_2);
@@ -766,6 +797,7 @@ public class CardDetails extends AppCompatActivity{
         tvLable.setVisibility(View.VISIBLE);
     }
 
+    //Метод для проверки "Не наступло ли еще время присваивать звезду?"
     public int  checkForStar(int ID,  Context context)
     {
         DBHelper dbHelper;
@@ -777,7 +809,6 @@ public class CardDetails extends AppCompatActivity{
         long currentTime = System.currentTimeMillis();
         long unbrokenTime = currentTime - habit.getTimeStamp();
         long sumTime = habit.getTime() + unbrokenTime;
-
 
         if (unbrokenTime >= SettingsHelper.aimTime)
         {
@@ -796,6 +827,7 @@ public class CardDetails extends AppCompatActivity{
              return starAchieved;
        }
 
+       //Метод для отображения диалога о присвоении золотой звездочки
     public void showGoldDialog(String name, final Context context, final int ID)
     {
 
@@ -848,6 +880,7 @@ public class CardDetails extends AppCompatActivity{
         builder.setIcon(R.drawable.stargold);
         builder.setCancelable(false);
 
+        //Обработчик нажатия кнопки
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
@@ -870,7 +903,7 @@ public class CardDetails extends AppCompatActivity{
         dialog.show();
     }
 
-
+    //Метод для отображения серебряного диалога
     void showSilverDialog(String name, final Context context, final int ID)
     {
         long currentTime = System.currentTimeMillis();
@@ -938,6 +971,7 @@ public class CardDetails extends AppCompatActivity{
         builder.setIcon(R.drawable.starsilver);
         builder.setCancelable(false);
 
+        //Обработчик позитивной кнопки
         builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 long currentTime = System.currentTimeMillis();
@@ -954,6 +988,7 @@ public class CardDetails extends AppCompatActivity{
                  }
         });
 
+        //Обработчик негативной кнопки
         builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dbHelper.updateStar(db, ID, SettingsHelper.silverStar);
@@ -976,7 +1011,7 @@ public class CardDetails extends AppCompatActivity{
         dialog.show();
     }
 
-
+   //Обработчик кнопки "Заново". Все статусы привычки возвращаются к исходному состоянию.
     private void restartHabit(int id)
     {
         dbHelper.updateTimeTimeStamp(db, id, 0, 0);
@@ -999,7 +1034,7 @@ public class CardDetails extends AppCompatActivity{
         Toast.makeText(this, R.string.habitTrackerReset, Toast.LENGTH_SHORT).show();
     }
 
-
+    //Иницилизируем таймер
     private void setTimePicker()
     {
         timePicker = (TimePicker) findViewById(R.id.timePicker1);
@@ -1024,6 +1059,7 @@ public class CardDetails extends AppCompatActivity{
         timePickerCancelButton.setVisibility(View.INVISIBLE);
     }
 
+    //Иницилизируем UI для привычек в статусе StatusNew (см SettingsHelper constants)
     private void setNewState() //#setnewstate
     {
         habit = dbHelper.getRecord(db, ID);
@@ -1076,6 +1112,7 @@ public class CardDetails extends AppCompatActivity{
         tvRunningText.setTextColor(getResources().getColor(R.color.pickerblue));
      }
 
+    //Иницилизируем UI для привычек в статусе StatusPaused (см SettingsHelper constants)
     private void setPausedState()
     {
         setNewState();
@@ -1102,8 +1139,6 @@ public class CardDetails extends AppCompatActivity{
         long timeLeft = SettingsHelper.aimTime + SettingsHelper.timeRate - timeToSet;
 
 
-
-
         if (timeToSet > SettingsHelper.aimTime)
         {timeToSet = SettingsHelper.aimTime-SettingsHelper.timeRate;
          timeLeft =  SettingsHelper.aimTime - timeToSet;
@@ -1121,6 +1156,8 @@ public class CardDetails extends AppCompatActivity{
 
       }
 
+    //Иницилизируем UI для привычек в статусе StatusActiveNonStop (см SettingsHelper constants)
+    //Привычка активна и ни разу не ставилась на паузу
     private void setActiveNonStopState()
     {
         relativeLayout = (RelativeLayout) findViewById(R.id.rlProgressDays);
@@ -1205,6 +1242,8 @@ public class CardDetails extends AppCompatActivity{
         tvRunningText.setTextColor(getResources().getColor(R.color.pickerblue));
      }
 
+    //Иницилизируем UI для привычек в статусе StatusActiveResumed (см SettingsHelper constants)
+    //Привычка активна, однако как минимум один раз ставилась на паузу
     private void setActiveResumedState()
     {
         setActiveNonStopState();
@@ -1222,6 +1261,7 @@ public class CardDetails extends AppCompatActivity{
         ivStarLeft.setBackgroundResource(R.drawable.starsilver);
     }
 
+    //Иницилизируем UI для привычек в активном статусе и серебряной звездой
     private void setActiveSilverState()
     {
         setActiveNonStopState();
@@ -1231,6 +1271,7 @@ public class CardDetails extends AppCompatActivity{
         chbActive.setText(R.string.begin);
     }
 
+    //Иницилизируем UI для привычек в статусе StatusCompletedSilver(см SettingsHelper constants)
     private void setCompletedSilverState()
     {
         setNewState();
@@ -1248,7 +1289,6 @@ public class CardDetails extends AppCompatActivity{
        // tvStar.setBackgroundResource(R.drawable.starsilver);
         tvStar.setVisibility(View.INVISIBLE);
 
-
         chbActive.setText(R.string.begin);
         tvLableHabitDays.setText(R.string.workWithHabitWithPauses);
         tvHabit = (TextView) findViewById(R.id.habit_days_l) ;
@@ -1257,9 +1297,9 @@ public class CardDetails extends AppCompatActivity{
         tvDaysHabitWordDays.setText(unitsToSet);
         ivStarBig.setVisibility(View.VISIBLE);
         ivStarBig.setBackgroundResource(R.drawable.starsilver);
-
     }
 
+    //Иницилизируем UI для привычек в статусе StatusCompletedGold(см SettingsHelper constants)
     private void setCompletedGoldState()
     {
         habit = dbHelper.getRecord(db, ID);
@@ -1308,18 +1348,15 @@ public class CardDetails extends AppCompatActivity{
         tvLableHabitDays.setText(R.string.workWithHabitUnbroken);
 
         ivStarLeft.setBackgroundResource(R.drawable.stargold);
-
-
     }
 
 
+    //Вносим изменения в БД и отображаем сообщения если чекбокс активации/деактивации активирован
     private void handleActiveChecboxSet()
     {
         dbHelper.increaseActiveHabitsNumber();
 
         long currentTime = System.currentTimeMillis();
-//                long passedTime = currentTime - habit.timestamp;
-//                long totalTime = habit.time + passedTime;
 
         if (habit.status == SettingsHelper.statusNew)
         {
@@ -1347,6 +1384,7 @@ public class CardDetails extends AppCompatActivity{
         }
     }
 
+    //Вносим изменения в БД и отображаем сообщения если чекбокс активации/деактивации деактивирован
     public void handleActiveCheckboxUnset()
     {
         if (chbAlarm.isChecked()) //Deactivate notification if set
@@ -1388,6 +1426,7 @@ public class CardDetails extends AppCompatActivity{
         }
     }
 
+    //Метод, который по числу дней (часов) определяет падеж слова (день, дней, дня, часов, часа, час, минут, минута, минуты....)
     public String determineUnit(long timeToSet, long timeRate, Context context )
     {
         String unitWord = "";
@@ -1558,7 +1597,7 @@ public class CardDetails extends AppCompatActivity{
         return unitWord;
     }
 
-
+    //Метод, который фомирует уведомление и передает его в Android Notification System
     private void raiseNotification()
     {
         Notification notification;
@@ -1643,6 +1682,7 @@ public class CardDetails extends AppCompatActivity{
         toast.show();
     }
 
+    //Метод с помощью которого формируются правильные переносы текста
     @Override
     public void onWindowFocusChanged(boolean hasFocus)
     {

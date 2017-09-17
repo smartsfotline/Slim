@@ -30,11 +30,11 @@ public class SettingsHelper extends Activity {
 
     //Status constants
     public static final int statusCompletedGold    = -2;
-    public static final int statusCompletedSilver = -1;
-    public static final int statusNew             = 0;
-    public static final int statusPaused          = 1;
-    public static final int statusActiveResumed   = 2;
-    public static final int statusActiveNonStop  = 3;
+    public static final int statusCompletedSilver  = -1;
+    public static final int statusNew              = 0;
+    public static final int statusPaused           = 1;
+    public static final int statusActiveResumed    = 2;
+    public static final int statusActiveNonStop    = 3;
 
    //Alarm status constants
     public static final int alarmStatusNotActive = 0;
