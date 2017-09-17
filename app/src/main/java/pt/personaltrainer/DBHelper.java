@@ -27,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //Класс конструктор, создает новую БД только если БД с таким именем не существует
     public DBHelper(Context context) {
         // конструктор суперкласса
-        super(context, "myDB500", null, 1);
+        super(context, "myDB501", null, 1);
         this.context = context;
     }
 
